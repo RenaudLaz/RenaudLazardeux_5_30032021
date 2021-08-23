@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Orinoco site e-commerce de vente d'ours en peluche, page de choix de l'ourson">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Frontend/public/css/style.css" />
 
     <title>Orinoco - Site de e-commerce de vente d'ourson en peluche</title>
     
@@ -42,14 +43,42 @@
 
     <main role="main">
 
-      <div id="detail_teddy" class="container">
+      <div id="bloc" class="lg xl xxl"> <!-- main desktop -->
+        <span id="titre"> </span>
 
+        <div class="container"> <!-- image -->
+          <div class="row">
+            <div id="image" class="picture col">
+
+            </div>
+
+            <div class="col"> <!-- descritpion -->
+              <p class="text-start">
+                Description : 
+                <div id="description"></div>      
+                Choisissez la couleur de votre Ourson:
+              </p>
+
+              <div class="dropdown"> <!-- selection -->
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Couleur 
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="couleur">
+                </ul>
+              </div>
+
+              <div id="prix"> <!-- selection -->
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </main>
 
-    <footer class="text-center bg-info mt-5">
-      <div class="container text-white">
+    <footer class="footer text-center bg-info mt-5">
+      <div class=" contact container text-white">
         Si vous souhaitez avoir plus d'informations: contacter nous à <a href="mailto:contact@orinoco.com" title="Envoyer un mail à contact@orinoco.com">cette adresse mail.</a>
       </div>
     </footer>

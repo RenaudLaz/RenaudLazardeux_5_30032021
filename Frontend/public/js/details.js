@@ -1,4 +1,9 @@
-let apiProductListUrl = 'http://localhost:3000/api/teddies';
+let urlParams 
+let id_num;
+urlParams = new URLSearchParams(window.location.search);
+id_num = urlParams.get('id');
+let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id_num.toString();
+
 fetch(apiProductListUrl)
     .then(response => response.json())
     .then(data => 
@@ -15,55 +20,58 @@ fetch(apiProductListUrl)
     function recupTitre(data)
     {
         let i=0
-        console.log(data[i].name);
+        console.log(data.name);
 
         titre = document.createElement('h1');
-        titre.innerHTML +=  data[i].name;
+        titre.innerHTML +=  data.name;
 
-        document.getElementById('detail_teddy').appendChild(titre);
+        document.getElementById('titre').appendChild(titre);
     }
 
     function recupPhoto(data)
     {
         let i=0
-        console.log(data[i].imageUrl);
+        console.log(data.imageUrl);
 
         image = document.createElement('img');
-        image.src +=  data[i].imageUrl;
+        image.classList.add('d-block');
+        image.classList.add('w-100');
+        image.alt = 'Ours en peluche Orinoco' + data.name;
+        image.src +=  data.imageUrl;
 
-        document.getElementById('detail_teddy').appendChild(image);
+        document.getElementById('image').appendChild(image);
     }
 
     function recupDescription(data)
     {
         let i=0
-        console.log(data[i].description);
+        console.log(data.description);
 
         description = document.createElement('p');
-        description.innerHTML +=  data[i].description;
+        description.innerHTML +=  '<strong>' + data.description + '</strong>';
 
-        document.getElementById('detail_teddy').appendChild(description);
+        document.getElementById('description').appendChild(description);
     }
 
     function recupCouleur(data)
     {
         let i=0
-        console.log(data[i].colors);
+        console.log(data.colors[i]);
 
         couleur = document.createElement('li');
-        couleur.innerHTML += data[i].colors;
+        couleur.innerHTML += data.colors[i];
 
-        document.getElementById('detail_teddy').appendChild(couleur);
+        document.getElementById('couleur').appendChild(couleur);
     }
 
     function recupPrix(data)
     {
         let i=0
-        console.log(data[i].price);
+        console.log(data.price);
 
         prix = document.createElement('div');
-        prix.innerHTML +=  '<p class="price">' + (data[i].price / 100) + '€' + '</p>';
+        prix.innerHTML += '<strong>' + (data.price / 100) + '€' + '</strong>';
 
-        document.getElementById('detail_teddy').appendChild(prix);
+        document.getElementById('prix').appendChild(prix);
     }
 

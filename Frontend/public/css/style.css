@@ -1,0 +1,25 @@
+main{
+    text-align: center;
+    align-items: center;
+}
+
+footer{
+    height: 60px;
+    padding-top: 18px;
+
+}
+
+a{
+    color: white;
+    font-size: large;
+    font-style:italic;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    background: #000000;
+    color: #FFFFFF;
+}
