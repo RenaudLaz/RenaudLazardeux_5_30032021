@@ -24,7 +24,9 @@ function renderList(data) {
         item.href='../Frontend/public/html/details.html'; 
 //ajout nom photo descr
         item.innerHTML += '<div class="card-body">' + '<h5 class="card-title">' + data[i].name + '</h5>' + '<img src="' + data[i].imageUrl + '" alt="Ours en peluche ' + data[i].name + '" class="card-img-top">' + '<p class="card-text">' + data[i].description + '</p>' + '</div>';
-//envoie des éléments dans Id 
+        item.style.color = "#fff";
+        item.style.backgroundColor  = "#4F9FB7";
+        //envoie des éléments dans Id 
         document.getElementById("list_teddy").appendChild(item);
     }
 }

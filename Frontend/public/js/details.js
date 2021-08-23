@@ -51,7 +51,7 @@ fetch(apiProductListUrl)
         console.log(data[i].colors);
 
         couleur = document.createElement('li');
-        couleur.innerHTML +=  data[i].colors;
+        couleur.innerHTML += data[i].colors;
 
         document.getElementById('detail_teddy').appendChild(couleur);
     }
@@ -66,3 +66,4 @@ fetch(apiProductListUrl)
 
         document.getElementById('detail_teddy').appendChild(prix);
     }
+
