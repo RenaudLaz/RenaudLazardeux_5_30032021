@@ -54,11 +54,13 @@ fetch(apiProductListUrl)
     function recupCouleur(data)
     {
 
-        for (let i=0; i < data.length; i++){
-        console.log(data.colors);
+        for (let i=0; i < data.colors.length; i++){
+
+        console.log(data.colors[i]);
         couleur = document.createElement('option');
         couleur.innerHTML += data.colors[i];
         document.getElementById('couleur').appendChild(couleur);
+
         }
     }
 

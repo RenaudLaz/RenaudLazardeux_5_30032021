@@ -15,12 +15,20 @@ a{
     font-style:italic;
 }
 
+#bloc{
+margin-top: 100px;
+}
+
 #list_teddy {
     justify-content: center;
 }
 
 .col-md-4{
     margin: 20px 100px;
+}
+
+#couleur{
+    margin: 10px 0 150px 0;
 }
 
 .footer{
