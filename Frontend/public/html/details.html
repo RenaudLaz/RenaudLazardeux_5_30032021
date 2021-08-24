@@ -41,7 +41,7 @@
       </div>
     </header>
 
-    <main role="main">
+    <main class="main">
 
       <div id="bloc" class="lg xl xxl"> <!-- main desktop -->
         <span id="titre"> </span>
@@ -49,26 +49,21 @@
         <div class="container"> <!-- image -->
           <div class="row">
             <div id="image" class="picture col">
-
             </div>
 
             <div class="col"> <!-- descritpion -->
               <p class="text-start">
-                Description : 
+                <strong>Description : </strong>
                 <div id="description"></div>      
-                Choisissez la couleur de votre Ourson:
               </p>
+ 
+                <label for="couleur"><strong>Choisissez la couleur de votre Ourson:</strong></label> <br/><!-- selection -->
 
-              <div class="dropdown"> <!-- selection -->
-                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Couleur 
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="couleur">
-                </ul>
-              </div>
+                  <select name="ourson" id="couleur">
+                      <option value="">--Choix couleur--</option>
+                  </select>
 
               <div id="prix"> <!-- selection -->
-
               </div>
             </div>
           </div>
@@ -86,6 +81,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Frontend/public/js/function.js"></script>
     <script src="/Frontend/public/js/details.js" defer></script> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>

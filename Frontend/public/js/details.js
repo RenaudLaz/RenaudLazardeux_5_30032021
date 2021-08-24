@@ -17,61 +17,59 @@ fetch(apiProductListUrl)
         }   
     )
 
+
     function recupTitre(data)
     {
         let i=0
         console.log(data.name);
-
         titre = document.createElement('h1');
         titre.innerHTML +=  data.name;
-
         document.getElementById('titre').appendChild(titre);
     }
+
 
     function recupPhoto(data)
     {
         let i=0
         console.log(data.imageUrl);
-
         image = document.createElement('img');
         image.classList.add('d-block');
         image.classList.add('w-100');
         image.alt = 'Ours en peluche Orinoco' + data.name;
         image.src +=  data.imageUrl;
-
         document.getElementById('image').appendChild(image);
     }
+
 
     function recupDescription(data)
     {
         let i=0
         console.log(data.description);
-
         description = document.createElement('p');
-        description.innerHTML +=  '<strong>' + data.description + '</strong>';
-
+        description.innerHTML +=   data.description;
         document.getElementById('description').appendChild(description);
     }
 
+
     function recupCouleur(data)
     {
-        let i=0
-        console.log(data.colors[i]);
 
-        couleur = document.createElement('li');
+        for (let i=0; i < data.length; i++){
+        console.log(data.colors);
+        couleur = document.createElement('option');
         couleur.innerHTML += data.colors[i];
-
         document.getElementById('couleur').appendChild(couleur);
+        }
     }
 
+    
     function recupPrix(data)
     {
         let i=0
-        console.log(data.price);
-
-        prix = document.createElement('div');
-        prix.innerHTML += '<strong>' + (data.price / 100) + '€' + '</strong>';
-
+        console.log(formatPrice(data.price));
+        prix.innerHTML += '<strong>' + formatPrice(data.price) + '</strong>';
+        prix.style.color = "#4F9FB7";
+        
         document.getElementById('prix').appendChild(prix);
     }
 

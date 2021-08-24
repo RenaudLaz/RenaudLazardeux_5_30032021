@@ -15,11 +15,16 @@ a{
     font-style:italic;
 }
 
+#list_teddy {
+    justify-content: center;
+}
+
+.col-md-4{
+    margin: 20px 100px;
+}
+
 .footer{
     position: absolute;
     bottom: 0;
     width: 100%;
-
-    background: #000000;
-    color: #FFFFFF;
 }
