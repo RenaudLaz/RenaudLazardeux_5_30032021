@@ -28,7 +28,15 @@ margin-top: 100px;
 }
 
 #couleur{
-    margin: 10px 0 150px 0;
+    margin: 10px 0 90px 0;
+}
+
+.bouton__panier {
+    margin-top: 10px;
+    border-radius: 1.5em;
+    background-color: #4F9FB7;
+    color: white;
+    padding: 10px ;
 }
 
 .footer{
