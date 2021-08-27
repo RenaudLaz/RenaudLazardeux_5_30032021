@@ -4,6 +4,7 @@ fetch(apiProductListUrl)
     .then(data => 
         {
             console.log(data);
+            renderBasketBadge();
      
         }   
     )

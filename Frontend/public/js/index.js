@@ -4,6 +4,7 @@ fetch(apidataListUrl)
     .then(data => {
         console.log(data);
         renderList(data);
+        renderBasketBadge();
     });
 
 
