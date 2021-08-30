@@ -11,7 +11,7 @@ function getBasketItems()
 }
 
 
-function addtoBasket(id_num, color) 
+function addToBasket(id_num, color) 
 {
     let item = {
         id:id_num,
@@ -22,19 +22,26 @@ function addtoBasket(id_num, color)
     let basketItemsData = getBasketItems();
     basketItemsData.push(item);
     localStorage.setItem('basketItems', JSON.stringify(basketItemsData))
+    renderBasketBadge();
+}
+
+function fetchProduct(id){
+    
+    let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id_num.toString();
+    fetch(apiProductListUrl)
+    .then(response => response.json())
+    .then(data => {
+        return data;
+    })
 }
 
 function renderBasketBadge ()
 {
-
-    let totalOurs;
-    if (getBasketItems.lenght == 0) {
-        return 0;
-    } else {
-        return getBasketItems.Lenght;
-    }
-
+    let basketItemsData = getBasketItems();
+    console.log(basketItemsData);
+    document.getElementById('badge').innerHTML = basketItemsData.length;
 }
 
-//  Appeler à toutes les pages
-//  Appeler getBasketItems et afficher dans le badge (getBasketItems.lenght)
+// localStorage.setItem('basketItems', null);
+
+renderBasketBadge();

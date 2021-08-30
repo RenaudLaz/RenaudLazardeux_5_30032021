@@ -76,29 +76,10 @@ fetch(apiProductListUrl)
         document.getElementById('prix').appendChild(prix);
     }
 
-
-
-/*
-//programmation d'evenement
-    document.addEventListener('click', function (event) {
-        console.log('click');
-// If the clicked element doesn't have the right selector, bail
-        if (!event.target.matches('#ajout__panier')) return;
-    
-// Don't follow the link
-        event.preventDefault();
-    
-// Log the clicked element in the console
-        console.log(event.target);
-    
-    }, false);
-*/
-
-
-
-//"idem ligne 79-91"
     document.getElementById('ajout__panier').addEventListener('click', function(event) {
         console.log('click2');
         console.log(event.target);
-        addtoBasket(id_num, 'brown');
+        addToBasket(id_num, 'brown');
      });
+
+    
