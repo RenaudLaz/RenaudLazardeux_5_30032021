@@ -47,7 +47,7 @@ fetch(apiProductListUrl)
     {
         console.log(data.description);
         description = document.createElement('p');
-        description.innerHTML +=   data.description;
+        description.innerHTML += data.description;
 
         document.getElementById('description').appendChild(description);
     }

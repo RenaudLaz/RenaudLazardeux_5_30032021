@@ -1,8 +1,10 @@
+//prix divisé par 100
 function formatPrice(price)
 {
     return (price / 100 ).toString() + ',00' + '€';
 }
 
+//récupération liste ourson en JSON
 function getBasketItems() 
 {
     let basketItemsData = JSON.parse(localStorage.getItem('basketItems'));
@@ -25,14 +27,19 @@ function addToBasket(id_num, color)
     renderBasketBadge();
 }
 
-function fetchProduct(id){
-    
-    let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id_num.toString();
-    fetch(apiProductListUrl)
+function fetchProduct(id)
+{
+    console.log('start fetchProduct');
+    let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id.toString();
+    console.log('let fetchProduct');
+    return fetch(apiProductListUrl)
     .then(response => response.json())
-    .then(data => {
-        return data;
-    })
+    .then(data =>
+        {
+            return data
+        }
+    )
+    .catch(error => console.warn(error));
 }
 
 function renderBasketBadge ()
@@ -42,6 +49,8 @@ function renderBasketBadge ()
     document.getElementById('badge').innerHTML = basketItemsData.length;
 }
 
-// localStorage.setItem('basketItems', null);
-
+//affiche le nombre dans le panier
 renderBasketBadge();
+
+//réinitialiser ourson localStorage
+// localStorage.setItem('basketItems', null);

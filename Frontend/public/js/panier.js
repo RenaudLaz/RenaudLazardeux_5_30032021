@@ -1,32 +1,64 @@
-let apiProductListUrl = 'http://localhost:3000/api/teddies';
-fetch(apiProductListUrl)
-    .then(response => response.json())
-    .then(data => 
+/*de localStorage à teddies*/
+let basketItems = getBasketItems();
+console.log(basketItems);
+
+for (let i = 0 ; i < basketItems.length; i++)
+    {
+        basketItems[i].idx = i;
+        const basketItem = basketItems[i];
+        panierArticle(i);
+        fetchProduct(basketItems[i].id)
+        
+            .then(data => 
+                {
+                    panierDetails(basketItem, data);
+                    panierTotal(data);
+                }
+            );
+    }
+
+
+        /*Création de la ligne par article*/
+        function panierArticle(i)
         {
-            console.log(data);
-            renderBasketBadge();
-     
-        }   
-    )
+            article = document.createElement('div');
+            article.classList.add('row');
+            article.id = 'commande'+ i.toString();
+            document.getElementById('article').appendChild(article);
+        }
+    
 
-    function panierResume(data, qty, color)
-    {
-        console.log(data);
+        /*Création de l'article*/
+        function panierDetails(basketItem, data)
+        {
+            image = document.createElement('div');
+            image.classList.add('col');
+            image.innerHTML += '<img class="img-thumbnail" alt="Ours en peluche' + data.name + '"src="'+data.imageUrl+'">';
+        
+            document.getElementById('commande'+ basketItem.idx.toString()).appendChild(image);
 
-        resume = document.createElement('div');
-        resume.innerHTML += '<h2>'+data.name+'</h2>';
-        resume.innerHTML += '<spam>'+color+'</spam>';
+            nomOurson = document.createElement('div');
+            nomOurson.classList.add('col');
+            nomOurson.innerHTML += '<h4>'+data.name+'</h4><span>Quantité : '+ basketItem.qty  +'</span>';
 
-        document.getElementById('resume').appendChild(resume);
-    }
+            document.getElementById('commande'+ basketItem.idx.toString()).appendChild(nomOurson);
 
-    //récuper getbascketitems le panier ou récupérer tout les ours (API)
-    //calculer prix
-    let data = null;
-    let basketItemsData = getBasketItems();
-    console.log(basketItemsData);
-    for (var i = 0 ; i < basketItems.length; i++) 
-    {
-        data = fetchProduct(basketItems[i].id);
-        panierResume(data, basketItemsData[i].qty, basketItemsData[i].color);
-    }
+            prix = document.createElement('div');
+            prix.classList.add('col');
+            prix.innerHTML += '<div class="col">'+formatPrice(data.price)+'</div>';
+
+            document.getElementById('commande'+ basketItem.idx.toString()).appendChild(prix);
+        }
+
+        function panierTotal(data)
+        {
+            let total = 0;
+            for (let i = 0 ; i < basketItems.length; i++)
+            {
+            array = basketItems.length;
+            total += total + data.price;
+            console.log(total);
+            console.log(data.price);
+            console.log(array);
+            }
+        }
