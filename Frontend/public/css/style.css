@@ -6,13 +6,16 @@ main{
 footer{
     height: 60px;
     padding-top: 18px;
-
 }
 
 a{
     color: white;
     font-size: large;
     font-style:italic;
+}
+
+h4{
+    font-size: 20px;
 }
 
 #bloc{

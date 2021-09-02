@@ -62,7 +62,9 @@
                 <span class="badge badge-pill badge-primary ml-2" id="badge">0</span>
               </h4>
 
-              <div class="list-group mb-3"  id="article">
+<!--Début création tableau (panierDetails)-->
+<div class="container" id="article">
+              <div class="list-group mb-3">
                 <span class="list-group-item d-flex justify-content-between" id="detail__ourson">
                   <div id="commande">
                     <h6 class="my-0" id="nom__produit--ourson">Nom du produit</h6>
@@ -70,6 +72,9 @@
                   </div>
                   <span class="text-muted" id="prix__produit--ourson">12 €</span>
                 </span>
+</div>
+<!--Fin création tableau-->
+
                 <span class="list-group-item d-flex justify-content-between">
                   <span>Total (€uros)</span>
                   <strong id="prix__total">20 €</strong>
@@ -113,7 +118,7 @@
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="postal">Code Postale</label>
+                  <label for="postal">Code Postal</label>
                   <input type="text" class="form-control" id="postal" placeholder="75000" required>
                   <div class="invalid-feedback">
                     Veuillez entrer un code postale de livraison>.

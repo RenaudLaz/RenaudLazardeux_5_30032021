@@ -8,13 +8,13 @@ fetch(apiProductListUrl)
     .then(response => response.json())
     .then(data => 
         {
+            renderBasketBadge();
             console.log(data);
             recupTitre(data);
             recupPhoto(data);
             recupDescription(data);
             recupCouleur(data);
             recupPrix(data);
-            renderBasketBadge()
         }   
     )
 

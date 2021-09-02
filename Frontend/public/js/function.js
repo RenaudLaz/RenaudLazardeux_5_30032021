@@ -49,8 +49,5 @@ function renderBasketBadge ()
     document.getElementById('badge').innerHTML = basketItemsData.length;
 }
 
-//affiche le nombre dans le panier
-renderBasketBadge();
-
 //réinitialiser ourson localStorage
 // localStorage.setItem('basketItems', null);
