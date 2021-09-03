@@ -14,12 +14,32 @@ a{
     font-style:italic;
 }
 
-h4{
-    font-size: 20px;
+h2 {
+    font-size: 25px;
+
+}
+
+h3{
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.bloc__ourson {
+    border: solid 1px #DFDFDF;
+    background-color: white;
+    padding: 2px;
+    align-items: center;
+}
+
+.detail__ourson--choix {
+    margin: 0 20px 0 20px;
+    padding-bottom: 20px;
+    border-radius: 3em;
+    border: 5px solid #4F9FB7;
 }
 
 #bloc{
-margin-top: 100px;
+margin-top: 40px;
 }
 
 #list_teddy {
