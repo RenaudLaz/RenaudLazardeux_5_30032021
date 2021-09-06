@@ -37,7 +37,7 @@ fetch(apiProductListUrl)
         image.classList.add('d-block');
         image.classList.add('w-100');
         image.alt = 'Ours en peluche Orinoco' + data.name;
-        image.src +=  data.imageUrl;
+        image.src += data.imageUrl;
 
         document.getElementById('image').appendChild(image);
     }
@@ -77,7 +77,7 @@ fetch(apiProductListUrl)
     }
 
     document.getElementById('ajout__panier').addEventListener('click', function(event) {
-        console.log('click2');
+        console.log('ajout panier');
         console.log(event.target);
         addToBasket(id_num, 'brown');
      });

@@ -58,10 +58,11 @@ for (let i = 0 ; i < basketItems.length; i++)
 
         function totalBasketPrice(total)
         {
-            totalPrice = formatPrice(total);
+            totalPrice = formatPrice2(total);
             finalPrice = document.createElement('span');
             finalPrice.innerHTML += totalPrice;
-            finalPrice.style.color = "red";
+
+//            finalPrice.style.color = "red";
 
             console.log(finalPrice);
             
