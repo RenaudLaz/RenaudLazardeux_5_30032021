@@ -62,11 +62,11 @@
                 <span class="badge badge-pill badge-primary ml-2" id="badge">0</span>
               </h2>
 
-              <!--Début création tableau (panierDetails)-->
+<!--Début création tableau (panierDetails)-->
               <div class="container ourson" id="article">
 
               </div>
-              <!--Fin création tableau-->
+<!--Fin création tableau-->
 
                 <span class="list-group-item d-flex justify-content-between">
                   <span>Total:</span>
@@ -74,10 +74,10 @@
                 </span>
             </div>
 
-            
+<!--Début formulaire-->
           <div class="col-md-8 order-md-3 mt-5">
             <h2 class="mb-3">Adresse de livraison</h2>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" >
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">Nom</label>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="postal">Code Postal</label>
-                  <input type="text" class="form-control" id="postal" placeholder="75000" required>
+                  <input type="text" class="form-control" id="postal" placeholder="75000" pattern="[0-9]{,5}" required>
                   <div class="invalid-feedback">
                     Veuillez entrer un code postale de livraison>.
                   </div>
@@ -128,6 +128,7 @@
               <button class="btn btn-primary btn-lg btn-block" type="submit">Paiement</button>
             </form>
           </div>
+<!--Fin formulaire-->
         </div>
       </div>
     </main>

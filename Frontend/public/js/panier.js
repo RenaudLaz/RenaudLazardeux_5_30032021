@@ -1,20 +1,20 @@
-let total = 0;
-let basketItems = getBasketItems();
+let totalPrice = 0;
+let allBasketItems = getBasketItems();
 renderBasketBadge();
 
-for (let i = 0 ; i < basketItems.length; i++)
+for (let i = 0 ; i < allBasketItems.length; i++)
     {
-        basketItems[i].idx = i;
-        const basketItem = basketItems[i];
-        prepareArticleHTML(i);
-        fetchProduct(basketItems[i].id)
+        allBasketItems[i].idx = i;
+        const oneBasketItem = allBasketItems[i];
+        renderDetailArticle(i);
+        fetchProduct(allBasketItems[i].id)
 
             .then(data => 
                 {
-                    renderArticle(basketItem, data);
-                    total += data.price ;
-                    console.log(total);
-                    totalBasketPrice(total);
+                    renderArticle(oneBasketItem, data);
+                    totalPrice += data.price ;
+                    console.log(totalPrice);
+                    renderTotalPrice(totalPrice);
                 }
             )    
             .catch(error => console.warn(error));
@@ -22,7 +22,7 @@ for (let i = 0 ; i < basketItems.length; i++)
     }
 
         /*Création de la ligne par article*/
-        function prepareArticleHTML(i)
+        function renderDetailArticle(i)
         {
             article = document.createElement('div');
             article.classList.add('row');
@@ -33,37 +33,36 @@ for (let i = 0 ; i < basketItems.length; i++)
     
 
         /*Création de l'article*/
-        function renderArticle(basketItem, data)
+        function renderArticle(oneBasketItem, data)
         {
             image = document.createElement('div');
             image.classList.add('col');
             image.innerHTML += '<img class="img-thumbnail" alt="Ours en peluche' + data.name + '"src="'+data.imageUrl+'">';
         
-            document.getElementById('commande'+ basketItem.idx.toString()).appendChild(image);
+            document.getElementById('commande'+ oneBasketItem.idx.toString()).appendChild(image);
 
             nomOurson = document.createElement('div');
             nomOurson.classList.add('col');
-            nomOurson.innerHTML += '<h3 class="my-1">' + data.name + '</h3>Quantité : ' + basketItem.qty;
+            nomOurson.innerHTML += '<h3 class="my-1">' + data.name + '</h3>Quantité : ' + oneBasketItem.qty;
 
-            document.getElementById('commande'+ basketItem.idx.toString()).appendChild(nomOurson);
+            document.getElementById('commande'+ oneBasketItem.idx.toString()).appendChild(nomOurson);
 
             prix = document.createElement('div');
             prix.classList.add('col');
             prix.innerHTML += '<div class="col font-weight-bold">'+formatPrice(data.price)+'</div>';
             prix.style.color = "#4F9FB7";
 
-            document.getElementById('commande'+ basketItem.idx.toString()).appendChild(prix);    
+            document.getElementById('commande'+ oneBasketItem.idx.toString()).appendChild(prix);    
         
         }
 
-        function totalBasketPrice(total)
+        function renderTotalPrice(totalPrice)
         {
-            totalPrice = formatPrice2(total);
+            total = formatPrice2(totalPrice);
             finalPrice = document.createElement('span');
-            finalPrice.innerHTML += totalPrice;
+            finalPrice.innerHTML += total;
 
 //            finalPrice.style.color = "red";
-
             console.log(finalPrice);
             
             document.getElementById('prix__total').appendChild(finalPrice);

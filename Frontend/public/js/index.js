@@ -1,3 +1,4 @@
+
 let apidataListUrl = 'http://localhost:3000/api/teddies';
 fetch(apidataListUrl)
     .then(response => response.json())

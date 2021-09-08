@@ -1,27 +1,36 @@
-//prix divisé par 100
+//format du prix
 function formatPrice(price)
 {
     return (price / 100 ).toString() + ',00' + '€';
 }
 
-//récupération liste ourson en JSON
-function getBasketItems() 
+function formatPrice2(price)
 {
-    let basketItemsData = JSON.parse(localStorage.getItem('basketItems'));
-    if (!basketItemsData) basketItemsData=[];
-    return basketItemsData    
+    let i = 0;
+    console.log(allBasketItems.length);
+
+    return (allBasketItems[i].qty * price)/100 + ',00€ ';
 }
 
 
+//Initialisation du localStorage
+function getBasketItems() 
+{
+    let allBasketItems = JSON.parse(localStorage.getItem('allBasketItems'));
+    if (!allBasketItems) allBasketItems=[];
+    return allBasketItems    
+}
+
+//Items du localStorage
 function addToBasket(id_num, color)
 {
-    let basketItems = getBasketItems();
+    let allBasketItems = getBasketItems();
     let found = false; /*trouver : faux*/
-    for (let i = 0 ; i < basketItems.length; i++) {
-        if (basketItems[i].id == id_num) { /*si id=id */
+    for (let i = 0 ; i < allBasketItems.length; i++) {
+        if (allBasketItems[i].id == id_num) { /*si id=id */
             found = true;
-            basketItems[i].qty += 1;
-            console.log('id ' + basketItems[i].id + ' quantity changed to ' + basketItems[i].qty);
+            allBasketItems[i].qty += 1;
+            console.log('id ' + allBasketItems[i].id + ' quantité passe à ' + allBasketItems[i].qty + ' Oursons dans le panier ');
             break;
         }
     }
@@ -32,13 +41,15 @@ function addToBasket(id_num, color)
             qty:1,
             color: color,
         }        
-        basketItems.push(item);  
+        allBasketItems.push(item);  
 
     }
-    storeBasketItems(basketItems);
+    storeBasketItems(allBasketItems);
+    renderBasketBadge();
 } 
-function storeBasketItems(basketItems) {
-    localStorage.setItem('basketItems', JSON.stringify(basketItems))
+
+function storeBasketItems(allBasketItems) {
+    localStorage.setItem('allBasketItems', JSON.stringify(allBasketItems))
 }
 
 function fetchProduct(id)
@@ -56,21 +67,22 @@ function fetchProduct(id)
     .catch(error => console.warn(error));
 }
 
-function renderBasketBadge ()
+//Rendu du badge
+function renderBasketBadge()
 {
-    let i=0;
-    let basketItemsData = getBasketItems();
-    console.log(basketItemsData);
-    console.log(basketItems[i].qty)
-    document.getElementById('badge').innerHTML = basketItemsData.length * basketItems[i].qty;
-//bon pour 1 seul ourson    document.getElementById('badge').innerHTML = basketItems[i].qty;
+    let allBasketItems = getBasketItems();
+    console.log(allBasketItems);
+
+    for (let i = 0 ; i < allBasketItems.length; i++) {
+        totalTemp = allBasketItems[i].qty;
+        console.log(totalTemp)
+    }
+    document.getElementById('badge').innerHTML = totalTemp;
+    
+//bon pour 1 seul ourson    document.getElementById('badge').innerHTML = allBasketItems[i].qty;
 
 }
 
 //réinitialiser ourson localStorage
-// localStorage.setItem('basketItems', null);
-function formatPrice2(price)
-{
-    let i=0;
-    return (basketItems[i].qty * price)/100 + ',00€ ';
-}
+// localStorage.setItem('allBasketItems', null);
+
