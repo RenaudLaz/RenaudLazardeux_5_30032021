@@ -1,7 +1,5 @@
-let urlParams 
-let id_num;
-urlParams = new URLSearchParams(window.location.search);
-id_num = urlParams.get('id');
+let urlParams = new URLSearchParams(window.location.search);
+let id_num = urlParams.get('id');
 let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id_num.toString();
 
 fetch(apiProductListUrl)
@@ -15,7 +13,6 @@ fetch(apiProductListUrl)
             recupCouleur(data);
             recupPrix(data);
             renderBasketBadge();
-
         }   
     )
 

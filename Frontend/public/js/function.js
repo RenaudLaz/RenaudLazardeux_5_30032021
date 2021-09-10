@@ -4,14 +4,6 @@ function formatPrice(price)
     return (price / 100 ).toString() + ',00' + '€';
 }
 
-function formatPrice2(price)
-{
-    let i = 0;
-    console.log(allBasketItems.length);
-
-    return (allBasketItems[i].qty * price)/100 + ',00€ ';
-}
-
 
 //Initialisation du localStorage
 function getBasketItems() 
@@ -72,17 +64,18 @@ function renderBasketBadge()
 {
     let allBasketItems = getBasketItems();
     console.log(allBasketItems);
-
+    let totalTemp=0;
     for (let i = 0 ; i < allBasketItems.length; i++) {
-        totalTemp = allBasketItems[i].qty;
+        totalTemp += allBasketItems[i].qty;
         console.log(totalTemp)
     }
     document.getElementById('badge').innerHTML = totalTemp;
     
-//bon pour 1 seul ourson    document.getElementById('badge').innerHTML = allBasketItems[i].qty;
-
 }
 
 //réinitialiser ourson localStorage
 // localStorage.setItem('allBasketItems', null);
+
+//init global de toutes les pages
+renderBasketBadge();
 

@@ -13,7 +13,6 @@ function renderList(data) {
     let item = null;
     for (let i=0; i < data.length; i++){
      
-
 //création de liens
         item = document.createElement('a');
 //création de bloc
@@ -32,6 +31,3 @@ function renderList(data) {
         document.getElementById("list_teddy").appendChild(item);
     }
 }
-
-
-
