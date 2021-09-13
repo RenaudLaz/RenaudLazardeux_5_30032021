@@ -117,7 +117,8 @@ async function submitOrder() {
         document.getElementById('total').innerHTML = (totalPrice /100) + ',00€';
         document.getElementById('identifiant').innerHTML = order.orderId;
 
-        document.getElementsByClassName("paiementInfo").style.display = "none";
+        document.getElementsByClassName("paiementInfo")[0].style.display = "none";
+        document.getElementsByClassName("orderConfirmation")[0].style.display = "block";
 
     } else {
         console.log('ERROR')
