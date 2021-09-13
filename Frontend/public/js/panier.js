@@ -61,7 +61,6 @@ function renderTotalPrice(totalPrice)
     total = formatPrice(totalPrice);
     finalPrice = document.createElement('span');
     finalPrice.innerHTML += total;
-    finalPrice.style.color = "red";
     console.log(finalPrice);
     
     document.getElementById('prix__total').appendChild(finalPrice);
@@ -77,7 +76,7 @@ function initPageEvents()
         console.log("we test async/await syntax, here we are before the call to submit order")
         const order = await submitOrder();
         console.log("we test async/await syntax, here we are after the call to submit order")
-        displayOrder(order)
+        console.log(order.orderId);
     })
 }
 
@@ -88,13 +87,14 @@ async function submitOrder() {
     console.log('submitorder starts')
     const data = {
         contact: {
-            firstName: "Samantha",
-            lastName: "Faw",
-            address: "10A corniche des oliviers",
-            city: "94235 Ivry sur Seine",
-            email: "sam@testonorico.com"
+            firstName: document.getElementsByName('firstName')[0].value,
+            lastName: document.getElementsByName('lastName')[0].value,
+            address: document.getElementsByName('address')[0].value,
+            codePostal: document.getElementsByName('codePostal')[0].value,
+            city: document.getElementsByName('city')[0].value,
+            email: document.getElementsByName('email')[0].value,
         },
-        products: [allBasketItems]
+        products: ['5beaabe91c9d440000a57d96']
     }
     const response = await fetch(url, {
         method: 'POST',
@@ -103,16 +103,30 @@ async function submitOrder() {
         },
         body: JSON.stringify(data)
     });
+
     let order = null;
     if (response.status === 201) {
         order = await response.json()
         console.log("Commande passée avec succès")
-        console.log("Order ID " + order.orderId)
+        console.log("Order ID :" + order.orderId)
         console.log(order)
+        console.log(order.contact.firstName)
+
+
+        document.getElementById('clientName').innerHTML = order.contact.firstName;
+        document.getElementById('total').innerHTML = (totalPrice /100) + ',00€';
+        document.getElementById('identifiant').innerHTML = order.orderId;
+
+        document.getElementsByClassName("paiementInfo").style.display = "none";
+
     } else {
         console.log('ERROR')
-        document.getElementById('btn-order').disabled = false;
+        document.getElementById('btn-primary').disabled = false;
+       
     }
     console.log('submitorder ends')
+ 
     return order;
+
 }
+

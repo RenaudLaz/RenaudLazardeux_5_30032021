@@ -75,20 +75,20 @@
             </div>
 
 <!--Début formulaire-->
-          <div class="col-md-8 order-md-3 mt-5">
+          <div class="paiementInfo col-md-8 order-md-3 mt-5">
             <h2 class="mb-3">Adresse de livraison</h2>
             <form class="needs-validation" id="commande__validation">
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">Nom</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="Orinoco" value="" required>
+                  <input type="text" class="form-control" id="lastname" name="lastName" placeholder="Orinoco" value="" required>
                   <div class="invalid-feedback">
                     Veuillez entrer votre nom.
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="lastName">Prénom</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="Teddy" value="" required>
+                  <input type="text" class="form-control" id="firstname" name="firstName" placeholder="Teddy" value="" required>
                   <div class="invalid-feedback">
                     Veuillez entrer votre prénom.
                   </div>
@@ -96,7 +96,7 @@
               </div>
               <div class="mb-3">
                 <label for="address">Adresse</label>
-                <input type="text" class="form-control" id="address" placeholder="1234 Grande rue" required>
+                <input type="text" class="form-control" id="addresse" name="address" placeholder="1234 Grande rue" required>
                 <div class="invalid-feedback">
                   Veuillez entrer une adresse de livraison>.
                 </div>
@@ -104,14 +104,14 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="ville">Ville</label>
-                  <input type="text" class="form-control" id="ville" placeholder="Paris" required>
+                  <input type="text" class="form-control" id="ville" name="city" placeholder="Paris" required>
                   <div class="invalid-feedback">
                     Veuillez entrer une ville de livraison>.
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="postal">Code Postal</label>
-                  <input type="text" class="form-control" id="postal" placeholder="75000" pattern="[0-9]{0,5}" required>
+                  <input type="text" class="form-control" id="postal" name="codePostal"placeholder="75000" pattern="[0-9]{0,5}" required>
                   <div class="invalid-feedback">
                     Veuillez entrer un code postale de livraison>.
                   </div>
@@ -119,7 +119,7 @@
               </div>
               <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="abc@orinoco.com" required>
+                <input type="email" class="form-control" id="emails" name="email" placeholder="abc@orinoco.com" required>
                 <div class="invalid-feedback">
                   Veuillez entrer une adresse email valide.
                 </div>
@@ -129,6 +129,14 @@
             </form>
           </div>
 <!--Fin formulaire-->
+
+          <div class="orderConfirmation col-md-8 order-md-3 mt-5">
+            <p>Merci d'avoir passé commande: <b id="clientName"></b>, <br>
+              nous avons bien reçu votre paiement de <b id="total"></b>.<br>
+              Votre commande porte le numéro: <b id="identifiant"></b> 
+            </p>
+          </div>
+
         </div>
       </div>
     </main>

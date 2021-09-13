@@ -67,3 +67,15 @@ margin-top: 40px;
     bottom: 0;
     width: 100%;
 }
+
+.paiementInfo{
+    display: block;
+}
+.orderConfirmation {
+   /* display: none;*/
+    border: 3px #0EBB00 solid;
+    border-radius: 1.5em;
+    background-color: #9FFF97;
+    padding: 2em;
+    font-size: 25px;
+}
