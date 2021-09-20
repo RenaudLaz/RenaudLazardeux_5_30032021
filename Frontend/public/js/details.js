@@ -16,68 +16,62 @@ fetch(apiProductListUrl)
         }   
     )
 
+//Récupération des éléments de la page details.html
+function recupTitre(data)
+{
+    console.log(data.name);
+    titre = document.createElement('h1');
+    titre.innerHTML +=  data.name;
+    titre.style.color = "#4F9FB7";
 
-    function recupTitre(data)
-    {
-        console.log(data.name);
-        titre = document.createElement('h1');
-        titre.innerHTML +=  data.name;
-        titre.style.color = "#4F9FB7";
+    document.getElementById('titre').appendChild(titre);
+}
 
-        document.getElementById('titre').appendChild(titre);
-    }
+function recupPhoto(data)
+{
+    console.log(data.imageUrl);
+    image = document.createElement('img');
+    image.classList.add('d-block');
+    image.classList.add('w-100');
+    image.alt = 'Ours en peluche Orinoco' + data.name;
+    image.src += data.imageUrl;
 
+    document.getElementById('image').appendChild(image);
+}
 
-    function recupPhoto(data)
-    {
-        console.log(data.imageUrl);
-        image = document.createElement('img');
-        image.classList.add('d-block');
-        image.classList.add('w-100');
-        image.alt = 'Ours en peluche Orinoco' + data.name;
-        image.src += data.imageUrl;
+function recupDescription(data)
+{
+    console.log(data.description);
+    description = document.createElement('p');
+    description.innerHTML += data.description;
 
-        document.getElementById('image').appendChild(image);
-    }
+    document.getElementById('description').appendChild(description);
+}
 
+function recupCouleur(data)
+{
+    for (let i=0; i < data.colors.length; i++){
 
-    function recupDescription(data)
-    {
-        console.log(data.description);
-        description = document.createElement('p');
-        description.innerHTML += data.description;
-
-        document.getElementById('description').appendChild(description);
-    }
-
-
-    function recupCouleur(data)
-    {
-
-        for (let i=0; i < data.colors.length; i++){
-
-        console.log(data.colors[i]);
-        couleur = document.createElement('option');
-        couleur.innerHTML += data.colors[i];
+    console.log(data.colors[i]);
+    couleur = document.createElement('option');
+    couleur.innerHTML += data.colors[i];
         
-        document.getElementById('couleur').appendChild(couleur);
-        }
+    document.getElementById('couleur').appendChild(couleur);
     }
+}
+ 
+function recupPrix(data)
+{
+    console.log(formatPrice(data.price));        
+    document.getElementById('prix').innerHTML = formatPrice(data.price);
+}
 
-    
-    function recupPrix(data)
-    {
-        console.log(formatPrice(data.price));
-        prix.innerHTML += '<strong>' + formatPrice(data.price) + '</strong>';
-        prix.style.color = "#4F9FB7";
-        
-        document.getElementById('prix').appendChild(prix);
-    }
-
-    document.getElementById('ajout__panier').addEventListener('click', function(event) {
-        console.log('ajout panier');
-        console.log(event.target);
-        addToBasket(id_num, 'brown');
-     });
+//ajout d'un produit et de ses infos dans le localStorage
+document.getElementById('ajout__panier').addEventListener('click', function(event) 
+{
+    console.log('ajout panier');
+    console.log(event.target);
+    addToBasket(id_num, 'brown');
+});
 
     

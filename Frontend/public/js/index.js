@@ -8,7 +8,7 @@ fetch(apidataListUrl)
         renderBasketBadge();
     });
 
-
+//Créations des éléments de la page index.html
 function renderList(data) {
     let item = null;
     for (let i=0; i < data.length; i++){

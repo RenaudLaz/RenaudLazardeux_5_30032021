@@ -1,11 +1,10 @@
-//format du prix
+//formatage du prix
 function formatPrice(price)
 {
     return (price / 100 ).toString() + ',00' + '€';
 }
 
-
-//Initialisation du localStorage
+//Création du localStorage
 function getBasketItems() 
 {
     let allBasketItems = JSON.parse(localStorage.getItem('allBasketItems'));
@@ -13,7 +12,18 @@ function getBasketItems()
     return allBasketItems    
 }
 
-//Items du localStorage
+//Récupère ids des oursons dans le panier
+function getBasketItemIds() 
+{   
+    let basketItems = getBasketItems();
+    let basketItemIds = [];
+    for (let i = 0 ; i < basketItems.length; i++){
+        basketItemIds.push(basketItems[i].id) 
+    }
+    return basketItemIds
+}
+
+//Création des infos des items du localStorage
 function addToBasket(id_num, color)
 {
     let allBasketItems = getBasketItems();
@@ -34,16 +44,17 @@ function addToBasket(id_num, color)
             color: color,
         }        
         allBasketItems.push(item);  
-
     }
     storeBasketItems(allBasketItems);
     renderBasketBadge();
 } 
 
+//Ajoute le panier dans le localStorage
 function storeBasketItems(allBasketItems) {
     localStorage.setItem('allBasketItems', JSON.stringify(allBasketItems))
 }
 
+//Permet le passage du localStorage au données de l'ourson par l'id
 function fetchProduct(id)
 {
     console.log('start fetchProduct');
@@ -70,7 +81,6 @@ function renderBasketBadge()
         console.log(totalTemp)
     }
     document.getElementById('badge').innerHTML = totalTemp;
-    
 }
 
 //réinitialiser ourson localStorage

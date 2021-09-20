@@ -32,7 +32,7 @@ function renderDetailArticle(i)
 }
     
 
-/*Création de l'article*/
+//Création de l'article
 function renderArticle(oneBasketItem, data)
 {
     image = document.createElement('div');
@@ -53,9 +53,9 @@ function renderArticle(oneBasketItem, data)
     prix.style.color = "#4F9FB7";
 
     document.getElementById('commande'+ oneBasketItem.idx.toString()).appendChild(prix);    
-
 }
 
+//Rendu visuel du total des prix 
 function renderTotalPrice(totalPrice)
 {
     total = formatPrice(totalPrice);
@@ -66,10 +66,11 @@ function renderTotalPrice(totalPrice)
     document.getElementById('prix__total').appendChild(finalPrice);
 }
 
+//Récupération du numéro de commande, à la validation du formulaire
 function initPageEvents()
     {
         document.getElementById('commande__validation').addEventListener('submit', async function(event) {
-        // disable button to prevent multiple clicks by error
+        // désactive le bouton pour éviter le multiclic
         event.target.disabled = true;
         event.stopPropagation();
         event.preventDefault();
@@ -79,9 +80,9 @@ function initPageEvents()
         console.log(order.orderId);
     })
 }
-
 initPageEvents();
 
+//Validation de la commande
 const url = 'http://localhost:3000/api/teddies/order';
 async function submitOrder() {
     console.log('submitorder starts')
@@ -94,7 +95,7 @@ async function submitOrder() {
             city: document.getElementsByName('city')[0].value,
             email: document.getElementsByName('email')[0].value,
         },
-        products: ['5beaabe91c9d440000a57d96']
+        products: getBasketItemIds()
     }
     const response = await fetch(url, {
         method: 'POST',
@@ -110,24 +111,21 @@ async function submitOrder() {
         console.log("Commande passée avec succès")
         console.log("Order ID :" + order.orderId)
         console.log(order)
-        console.log(order.contact.firstName)
 
-
+        //création des noms à récupérer pour le html
         document.getElementById('clientName').innerHTML = order.contact.firstName;
         document.getElementById('total').innerHTML = (totalPrice /100) + ',00€';
         document.getElementById('identifiant').innerHTML = order.orderId;
 
+        //Modification du formulaire en validation
         document.getElementsByClassName("paiementInfo")[0].style.display = "none";
         document.getElementsByClassName("orderConfirmation")[0].style.display = "block";
-
+        
     } else {
         console.log('ERROR')
         document.getElementById('btn-primary').disabled = false;
-       
     }
     console.log('submitorder ends')
- 
     return order;
-
 }
 
