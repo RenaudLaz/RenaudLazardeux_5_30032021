@@ -1,7 +1,7 @@
 //formatage du prix
 function formatPrice(price)
 {
-    return (price / 100 ).toString() + ',00' + '€';
+    return Math.round(price/100).toFixed(2) + '€';
 }
 
 //Création du localStorage
@@ -49,7 +49,7 @@ function addToBasket(id_num, color)
     renderBasketBadge();
 } 
 
-//Ajoute le panier dans le localStorage
+//Sauvegarde le panier dans le localStorage
 function storeBasketItems(allBasketItems) {
     localStorage.setItem('allBasketItems', JSON.stringify(allBasketItems))
 }
@@ -83,9 +83,5 @@ function renderBasketBadge()
     document.getElementById('badge').innerHTML = totalTemp;
 }
 
-//réinitialiser ourson localStorage
-// localStorage.setItem('allBasketItems', null);
-
 //init global de toutes les pages
 renderBasketBadge();
-
